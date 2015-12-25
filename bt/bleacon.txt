@@ -1,0 +1,7 @@
+node.jsでbleaconを使うときの注意点
+
+・「hciconfig」コマンドを実行し、UP RUNNINGになっていることを確認する
+・DOWNの場合は「sudo hciconfig hci0 up」で起動する
+・その後にroot権限(sudo使用)でindex.jsを実行する
+  → 「sudo node index.js」
+
