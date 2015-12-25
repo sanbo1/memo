@@ -1,0 +1,6 @@
+#クーロンで10分毎にIP設定を行う例
+
+crontab -e
+
+*/10 * * * * wget -q -O /dev/null http://YourMasterID:YourPassword@www.mydns.jp/login.html
+
