@@ -1,0 +1,43 @@
+#raspberry pi 2 で Beacon が使えるようになるまでの手順
+
+1.Node install
+
+	wget http://node-arm.herokuapp.com/node_latest_armhf.deb
+	sudo dpkg -i node_latest_armhf.deb
+	rm -f ./node_latest_armhf.deb
+
+	# npm upgrade
+	sudo npm install -g npm
+
+	# node.js upgrade
+	sudo npm install -g n
+	sudo n latest
+
+
+2.bluez install
+
+	# 注意 ： apt-get でインストールできる bluez はBLE非対応
+
+	wget http://www.kernel.org/pub/linux/bluetooth/bluez-5.30.tar.xz
+	xz -d bluez-5.30.tar.xz
+	tar xvf bluez-5.30.tar
+
+	cd bluez-5.30
+	./configure --disable-systemd
+	make
+
+	sudo make install
+
+
+3.関連ライブラリ install
+
+
+4.
+
+
+5.
+
+
+6.
+
+
