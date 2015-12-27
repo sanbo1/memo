@@ -43,12 +43,32 @@
 	# 再度 hciconfig コマンドにて Bluetooth の起動を確認する
 
 
-4.
+
+#
+# 音設定が必要な場合
+#
+1.音出力先設定
+
+	# デフォルトでは HDMI への出力(3)が有効になっているため
+	# オーディオジャックへの出力(1)に切り替える
+	# 0 : 自動判定
+	# 1 : オーディオ端子
+	# 2 : HDMI出力
+	sudo amixer cset numid=3 1
 
 
-5.
+2.出力確認
+
+	# 下記コマンドにて音出力の確認を行う
+	aplay /usr/share/sounds/alsa/Front_Center.wav
 
 
-6.
+3.音声合成システムインストール
 
+	# 下記コマンドにてインストールを行う
+	sudo apt-get -y install --install-suggests open-jtalk
+	
+	# 音声の読み上げ実行
+	http://deviceplus.jp/hobby/raspberrypi_entry_020/
+	上記サイトを参照
 
