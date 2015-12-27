@@ -61,6 +61,9 @@
 
 	# 下記コマンドにて音出力の確認を行う
 	aplay /usr/share/sounds/alsa/Front_Center.wav
+	
+	# 下記コマンドで音量調整可能
+	alsamixer
 
 
 3.音声合成システムインストール
