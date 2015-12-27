@@ -16,7 +16,7 @@
 2.bluez install
 
 	# 注意 ： apt-get でインストールできる bluez はBLE非対応
-	
+
 	sudo apt-get -y install libglib2.0-dev libdbus-1-dev libudev-dev libical-dev libreadline6-dev
 
 	wget http://www.kernel.org/pub/linux/bluetooth/bluez-5.30.tar.xz
@@ -34,12 +34,12 @@
 3.bleutooth 起動
 
 	hciconfig
-	
+
 	# 対象のBluetoothドングルが UP RUNNING となっていることを確認する
 	# DOWN になっている場合は下記コマンドにて Bluetooth の起動を行う
-	
+
 	sudo hciconfig hci0(対象BT) up
-	
+
 	# 再度 hciconfig コマンドにて Bluetooth の起動を確認する
 
 
@@ -67,8 +67,37 @@
 
 	# 下記コマンドにてインストールを行う
 	sudo apt-get -y install --install-suggests open-jtalk
-	
+
+	# 下記内容のシェルを作成
+############
+#!/bin/bash
+HV=/usr/share/hts-voice/nitech-jp-atr503-m001/nitech_jp_atr503_m001.htsvoice
+
+tempfile=`tempfile`
+option="-m $HV \
+  -s 16000 \
+  -p 100 \
+  -a 0.03 \
+  -u 0.0 \
+  -jm 1.0 \
+  -jf 1.0 \
+  -x /var/lib/mecab/dic/open-jtalk/naist-jdic \
+  -ow $tempfile"
+
+if [ -z "$1" ] ; then
+  open_jtalk $option
+else 
+  if [ -f "$1" ] ; then
+    open_jtalk $option $1
+  else 
+    echo "$1" | open_jtalk $option
+  fi
+fi
+
+aplay -q $tempfile
+rm $tempfile
+############
+
 	# 音声の読み上げ実行
-	http://deviceplus.jp/hobby/raspberrypi_entry_020/
-	上記サイトを参照
+	作成したシェルに引数で日本語を渡す
 
