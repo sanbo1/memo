@@ -29,8 +29,18 @@
 
 	sudo make install
 
+	# インストール完了後、BTドングルを挿してラズパイ再起動
 
-3.
+3.bleutooth 起動
+
+	hciconfig
+	
+	# 対象のBluetoothドングルが UP RUNNING となっていることを確認する
+	# DOWN になっている場合は下記コマンドにて Bluetooth の起動を行う
+	
+	sudo hciconfig hci0(対象BT) up
+	
+	# 再度 hciconfig コマンドにて Bluetooth の起動を確認する
 
 
 4.
